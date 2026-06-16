@@ -4,7 +4,7 @@ print("#1")
 graders = []
 
 for i in range(3):
-|	graders.append(5-i)
+    graders.append(5-i)
 print(graders)
 
 #2

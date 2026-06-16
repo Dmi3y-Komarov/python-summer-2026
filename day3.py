@@ -65,7 +65,7 @@ while(anotherOne):
             print("You number out of range (0, 25), tru again")
     
     print("end of programm")
-    answer = str(input("You want start programm one more time¿?(Y/n)"))
+    answer = str(input("You want start programm one more time¿?(Y/n)\n"))
     yAnswer = ["y", "Y", "yes", "Yes", "Hell fucking yeah man!"]
     nAnswer = ["n", "N", "no", "No", "Nope", "nope", "no thanks", "No thanks", "go fuck youreself, bro"]
     if answer in yAnswer:
