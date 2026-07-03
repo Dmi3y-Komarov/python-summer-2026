@@ -1,10 +1,20 @@
 #10
 
+from utils import iinput
 from math import *#для округления в большую сторону до int
-mn=int(input('Введите порядок матрицы, минимум 3: '))
-if mn<3:print('Error');quit()#проверка данных
-matrix=[]#будущая матрица
-chet=mn%2==0#можно было сразу в иф
+
+while True:
+    mn = iinput('Введите порядок матрицы, минимум 3: ')
+
+    if mn<3:
+        print('Ошибка: порядок не меньше 3!')
+    else:
+        break
+
+matrix = []#будущая матрица
+
+chet = mn%2==0#можно было сразу в иф
+
 matrix+=['1 '*(mn-1)+str(mn)]#первая строка
 #print(matrix)
 if chet:#алгоритм немного отличается из-за четности
@@ -13,7 +23,8 @@ if chet:#алгоритм немного отличается из-за четн
         #print(matrix,i)
     matrix+=[matrix[-1]]#первая строка после половины повторяет предыдущую
     #print(matrix,i)
-    Rmatrix=[]#второй кусок матрицы, который будет .reverse()
+
+    Rmatrix = []#второй кусок матрицы, который будет .reverse()
     Rmatrix+=['1 '+'0 '*(mn-2)+str(mn)]#последняя строка матрицы
     for i in range(1,int(mn/2-1)):#вторая половина матрицы, без первой и последней строк
         Rmatrix+=['0 '*i+str(i+1)+' '+'0 '*(mn-4-(2*(i-1)))+str(mn-i)+' '+'0 '*i]
@@ -33,4 +44,3 @@ else:
     Rmatrix.reverse()    
     matrix+=Rmatrix
 for i in range(mn):print(matrix[i])
-
