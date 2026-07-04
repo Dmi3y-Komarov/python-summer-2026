@@ -1,0 +1,47 @@
+[
+    {
+        "id" : "wolf",
+        "name" : "Волк",
+        "hp" : 30,
+        "attack" : 8,
+        "defense" : 4,
+        "soul" : 5,
+        "inventory" : {
+            "wolf_hearth" : 1,
+            "small_fangs" : 4,
+            "wolf_skin" : 1,
+            "wolf_meat" : 5
+        }
+    },
+
+    {
+        "id" : "bear",
+        "name" : "Медведь",
+        "hp" : 200,
+        "attack" : 20,
+        "defense" : 10,
+        "soul" : 20,
+        "inventory" : {
+            "bear_hearth" : 1,
+            "big_fangs" : 4,
+            "bear_skin" : 1,
+            "bear_meat" : 20
+        }
+    },
+
+    {
+        "id" : "grandather",
+        "name" : "Дед",
+        "hp" : 500,
+        "attack" : 2,
+        "defense" : 20,
+        "gold" : 200,
+        "soul" : 5000,
+        "inventory" : {
+            "whip" : 1,
+            "clamps" : 8,
+            "sword" : 4,
+            "potion" : 6
+        }
+    }
+]

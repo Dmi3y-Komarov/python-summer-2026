@@ -1,0 +1,30 @@
+[
+    {
+        "id" : "village",
+        "name" : "Деревня",
+        "description" : "Тихое и спокойное место",
+        "actions" : ["rest", "go_to_forest", "go_to_shop"]
+    },
+
+    {
+        "id" : "forest",
+        "name" : "Тёмный лес",
+        "description" : "Между деревьев мелькают тени...",
+        "actions" : ["fight_wolf", "go_to_village", "go_to_cave"],
+        "random_enemy" : "wolf"
+    },
+
+    {
+        "id" : "cave",
+        "name" : "Пещера",
+        "description" : "Сыро и темно. Вдалеке слышны стоны...",
+        "actions" : ["fight_bear", "go_to_forest", "rest"]
+    },
+
+    {
+        "id" : "shop",
+        "name" : "Лавка",
+        "description" : "Старик продаёт сомнительные зелья и мечи",
+        "actions" : ["use_shop", "talk_grandfather", "go_to_village", "buy_service"]
+    }
+]

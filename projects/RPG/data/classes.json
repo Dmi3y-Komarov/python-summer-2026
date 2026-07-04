@@ -1,0 +1,32 @@
+[
+    {
+        "id" : "warrior",
+        "name" : "Воин",
+        "description" : "Крепкий, но медленный",
+        "hp" : 120,
+        "attack" : 15,
+        "defense" : 15,
+        "start_location" : "village"
+    },
+
+    {
+        "id" : "mage",
+        "name" : "Маг",
+        "description" : "Хрупкий, бьет магией",
+        "hp" : 60,
+        "attack" : 5,
+        "defense" : 3,
+        "start_location" : "village"
+    },
+
+
+    {
+        "id" : "rogue",
+        "name" : "Разбойник",
+        "description" : "Быстрый и ловкий",
+        "hp" : 90,
+        "attack" : 18,
+        "defense" : 8,
+        "start_location" : "village"
+    }
+]
