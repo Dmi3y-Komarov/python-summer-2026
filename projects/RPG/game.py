@@ -2,6 +2,7 @@ import json
 import random
 import os
 from player import Player
+from src.text_manager import Text_manager
 
 class Game:
 
@@ -11,33 +12,39 @@ class Game:
         self.locations = self._load_json("data/locations.json")
         self.characters = self._load_json("data/classes.json")
         self.enemies = self._load_json("data/enemies.json")
+        self.text_manager = Text_manager("ru")
 
     def _load_json(self, filename):
         full_path = os.path.join(os.path.dirname(__file__), filename)
         with open(full_path, 'r', encoding='utf-8') as f:
             return json.load(f)
 
+    def _t(self, choice, **kwargs):
+        return self.text_manager.get(choice, **kwargs)
+
     def choose_character(self):
-        print("\nВЫБОР ПЕРСОНАЖА\n")
+        print(self._t("character_selection.title"))
 
         for i, char in enumerate(self.characters, 1):
-            print(f'{i}, {char["name"]} - {char["description"]}')
-            print(f'  HP: {char["hp"]} | Защита: {char["defense"]} | Атака: {char["attack"]}\n')
+            print(self._t("character_selection.class_format", i = i, name = char["name"], description = char["description"]))
+            print(self._t("character_selection.stats_format", hp = char["hp"], defense = char["defense"], attack = char["attack"]))
 
         while True:
             try:
-                choice = int(input('Выберите номер класса: '))
+                choice = int(input(self._t("character_selection.prompt")))
                 if 1<=choice<=len(self.characters):
                     break
             except ValueError:
-                print('Ошибка: вы ввели не число!')
+                print(self._t("errors.error_not_number"))
 
-        player_name = input('\nВведите имя Вашего персонажа: ').strip()
+        player_name = input(self._t("character_selection.enter_name")).strip()
         if not player_name:
-            player_name = 'Безымянный'
+            player_name = self._t("character_selection.default_name")
 
         self.player = Player(self.characters[choice-1], player_name)
-        print(f'\nДобро пожаловать, {self.player.name} [{self.player.character_class}]!')
+        self.text_manager.set_player(self.player)
+
+        print(self._t("character_selection.welcome"))
 
     def get_current_location(self):
         for loc in self.locations:
@@ -49,15 +56,16 @@ class Game:
         loc = self.get_current_location()
         print(f'\n{loc["name"]}')
         print(loc["description"])
-        print("Что будешь делать?")
+        print(self._t("location.action_prompt"))
         for i, action in enumerate(loc["actions"], 1):
-            print(f'{i}, {action}')
+            action = "actions." + action
+            print(self._t("location.action_format", i = i, action = self._t(action)))
 
     def handle_action(self, action):
         if action == 'rest' and self.player.location == 'cave':
-            print('\nИз темноты, покачиваясь, выходит огромный медведь...\nВы не успеваете проснуться, медведь уносит вас туда, откуда доносились стоны...\n')
+            
             self.player.current_hp = 0
-            self.death_message = "\nВы стали новым источником стонов. Но ненадолго..."
+            self.text_manager.play_scene("death_sequences.death_from_bear_on_rest")
         elif action == 'rest':
             self.player.heal(30)
         elif action.startswith("go_to_"):
@@ -144,8 +152,8 @@ class Game:
             second_choice = input("Выбор за Вами: ")
 
             if second_choice == "1":
-                print("Только войдя в комнату вы получаеье сильный удар чем-то тупым пл голове и падаете без сознания...")
-                print("Кто знает, что дед делал с Вами. Но Вы были обнаружены мертвым с сидьнейшим анальным кровотечением...")
+                print("Только войдя в комнату вы получаете сильный удар чем-то тупым по голове и падаете без сознания...")
+                print("Кто знает, что дед делал с Вами. Но Вы были обнаружены мертвым с сильнейшим анальным кровотечением...")
                 self.player.current_hp = 0
                 self.death_message = '\nВы оченб глупо погибли\n'
             else:
