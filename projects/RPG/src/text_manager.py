@@ -6,10 +6,14 @@ class Text_manager:
 
     def __init__(self, lang="ru"):
 
+        self.file_name = "texts.json"
         self.lang = lang
         self.context = {}
         self.texts = {}
         self.player = None
+
+        self.cache = {}
+        self.old_name = self.file_name
 
         self._load_texts()
 
@@ -28,7 +32,7 @@ class Text_manager:
             self.context[alias] = self.context[real_name]
 
     def _load_texts(self):
-        texts_path = os.path.join(os.path.dirname(__file__), "..", "data/", "texts.json")
+        texts_path = os.path.join(os.path.dirname(__file__), "..", "data/", self.file_name)
 
         texts_path = os.path.normpath(texts_path)
 
@@ -72,3 +76,24 @@ class Text_manager:
         for container in scene:
             message = container["text"]
             print(message)
+
+    def _clear_cache(self):
+        self.cache = {}
+
+    def _swap_cache(self):
+        texts = self.texts
+        self.texts = self.cache
+        self.cache = texts
+
+    def get_file_name(self):
+        return self.file_name
+
+    def set_file_name(self, new_name):
+        old_name = get_file_name()
+        if old_name != new_name:
+            self.file_name = new_name
+            self.cache = self.texts
+            self._load_texts()
+        elif self.old_name == new_name:
+            self._swap_cache()
+        return old_name

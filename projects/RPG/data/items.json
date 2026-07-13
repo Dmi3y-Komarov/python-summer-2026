@@ -1,0 +1,83 @@
+{
+    "iron_sword" : {
+        "type" : "wheapon",
+        "subtype" : "sword",
+
+        "base_stats" : {"weight" : 1.5, "price" : 50},
+        "text_id" : "iron_sword",
+
+        "max_durability" : 900,
+        "durability" : 900,
+        
+        "base_hits" : {
+            "thrust" : 10,
+            "cutting_blow" : 5,
+            "chopping_blow" : 10
+        },
+
+        "holding_blade_hits" : {
+            "strike_guard" : 15
+        }
+    },
+
+    "rusty_sword" : {
+        "type" : "wheapon",
+        "subtype" : "sword",
+
+        "base_stats" : {"weight" : 1.0, "price" : 10},
+        "text_id" : "rusty_sword",
+
+        "max_durability" : 200,
+        "durability" : 200,
+        
+        "base_hits" : {
+            "thrust" : 3,
+            "cutting_blow" : 2,
+            "chopping_blow" : 4
+        },
+
+        "holding_blade_hits" : {
+            "strike_guard" : 8
+        }
+    },
+
+    "star_sword" : {
+        "type" : "wheapon",
+        "subtype" : "sword",
+
+        "base_stats" : {"weight" : 100.0, "price" : 100000},
+        "text_id" : "star_sword",
+
+        "max_durability" : 1,
+        "durability" : 1,
+        
+        "base_hits" : {
+            "thrust" : 0,
+            "cutting_blow" : 0,
+            "chopping_blow" : 0
+        },
+
+        "holding_blade_hits" : {
+            "strike_guard" : 999999
+        }
+    },
+
+    "leather_armor" : {
+        "type" : "cloth",
+        "subtype" : "armor",
+
+        "base_stats" : {"weight" : 10.0, "price" : 35, "defense" : 4},
+        "text_id" : "leather_armor",
+
+        "max_durability" : 200,
+        "durability" : 200
+    },
+
+    "small_heal_potion" : {
+        "type" : "consumable",
+        "subtype" : "potion",
+
+        "base_stats" : {"weight" : 0.3, "price" : 10, "heal_amount" : 15},
+        "text_id" : "small_heal_potion"
+    }
+}
